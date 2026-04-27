@@ -9,5 +9,10 @@ data class UserProfile(
     val id: Int = 1,
     val name: String = "",
     val email: String = "",
-    val notificationsEnabled: Boolean = true
+    val password: String = "",
+    val title: String = "Beekeeper",
+    val yearsExperience: Int = 0,
+    val notificationsEnabled: Boolean = true,
+    val membershipStatus: String = "Free Plan",
+    val isLoggedIn: Boolean = false
 )

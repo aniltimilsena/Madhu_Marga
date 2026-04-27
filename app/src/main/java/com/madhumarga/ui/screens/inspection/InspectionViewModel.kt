@@ -17,6 +17,7 @@ data class InspectionFormState(
     val pestsPresent: Boolean = false,
     val honeyFlow: String = "Good",
     val notes: String = "",
+    val healthAssessment: String = "Healthy",
     val isSaved: Boolean = false
 )
 
@@ -27,40 +28,28 @@ class InspectionViewModel(application: Application) : AndroidViewModel(applicati
     private val _state = MutableStateFlow(InspectionFormState())
     val state: StateFlow<InspectionFormState> = _state.asStateFlow()
 
-    fun onQueenPresentChange(value: Boolean) {
-        _state.value = _state.value.copy(queenPresent = value)
-    }
-
-    fun onActivityLevelChange(value: String) {
-        _state.value = _state.value.copy(activityLevel = value)
-    }
-
-    fun onPestsPresentChange(value: Boolean) {
-        _state.value = _state.value.copy(pestsPresent = value)
-    }
-
-    fun onHoneyFlowChange(value: String) {
-        _state.value = _state.value.copy(honeyFlow = value)
-    }
-
-    fun onNotesChange(value: String) {
-        _state.value = _state.value.copy(notes = value)
-    }
+    fun onQueenPresentChange(v: Boolean) { _state.value = _state.value.copy(queenPresent = v) }
+    fun onActivityLevelChange(v: String) { _state.value = _state.value.copy(activityLevel = v) }
+    fun onPestsPresentChange(v: Boolean) { _state.value = _state.value.copy(pestsPresent = v) }
+    fun onHoneyFlowChange(v: String) { _state.value = _state.value.copy(honeyFlow = v) }
+    fun onNotesChange(v: String) { _state.value = _state.value.copy(notes = v) }
+    fun onHealthAssessmentChange(v: String) { _state.value = _state.value.copy(healthAssessment = v) }
 
     fun saveInspection(hiveId: Long) {
-        val currentState = _state.value
+        val s = _state.value
         viewModelScope.launch {
             repository.insertInspection(
                 Inspection(
                     hiveId = hiveId,
-                    queenPresent = currentState.queenPresent,
-                    activityLevel = currentState.activityLevel,
-                    pestsPresent = currentState.pestsPresent,
-                    honeyFlow = currentState.honeyFlow,
-                    notes = currentState.notes
+                    queenPresent = s.queenPresent,
+                    activityLevel = s.activityLevel,
+                    pestsPresent = s.pestsPresent,
+                    honeyFlow = s.honeyFlow,
+                    notes = s.notes,
+                    healthAssessment = s.healthAssessment
                 )
             )
-            _state.value = currentState.copy(isSaved = true)
+            _state.value = _state.value.copy(isSaved = true)
         }
     }
 }

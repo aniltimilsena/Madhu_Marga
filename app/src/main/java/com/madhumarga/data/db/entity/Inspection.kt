@@ -22,9 +22,12 @@ data class Inspection(
     val id: Long = 0,
     val hiveId: Long,
     val queenPresent: Boolean,
-    val activityLevel: String, // Low, Medium, High
+    val activityLevel: String,
     val pestsPresent: Boolean,
-    val honeyFlow: String, // Low, Good
+    val honeyFlow: String,
     val notes: String = "",
+    val title: String = "",
+    val colonyTemperament: String = "",
+    val healthAssessment: String = "Healthy",
     val date: Long = System.currentTimeMillis()
 )

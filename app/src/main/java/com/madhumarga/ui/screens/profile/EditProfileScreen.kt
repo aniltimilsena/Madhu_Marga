@@ -1,4 +1,4 @@
-package com.madhumarga.ui.screens.hive
+package com.madhumarga.ui.screens.profile
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -14,15 +14,14 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.ExposedDropdownMenuBox
-import androidx.compose.material3.ExposedDropdownMenuDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.SnackbarHost
+import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
@@ -30,9 +29,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
@@ -42,26 +39,23 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun AddEditHiveScreen(
-    hiveId: Long?,
+fun EditProfileScreen(
     onNavigateBack: () -> Unit,
-    viewModel: AddEditHiveViewModel = viewModel()
+    viewModel: ProfileViewModel = viewModel()
 ) {
     val state by viewModel.state.collectAsState()
-    var typeExpanded by remember { mutableStateOf(false) }
-    val hiveTypes = listOf("Langstroth", "Top Bar", "Warre", "Flow Hive", "Other")
+    val snackbarHostState = remember { SnackbarHostState() }
 
-    LaunchedEffect(hiveId) {
-        if (hiveId != null) viewModel.loadHive(hiveId)
-    }
     LaunchedEffect(state.isSaved) {
-        if (state.isSaved) onNavigateBack()
+        if (state.isSaved) {
+            snackbarHostState.showSnackbar("Profile saved successfully!")
+        }
     }
 
     Scaffold(
         topBar = {
             TopAppBar(
-                title = { Text(if (state.isEditing) "Edit Hive" else "Add Hive") },
+                title = { Text("Edit Profile") },
                 navigationIcon = {
                     IconButton(onClick = onNavigateBack) {
                         Icon(Icons.Default.ArrowBack, contentDescription = "Back")
@@ -73,7 +67,8 @@ fun AddEditHiveScreen(
                     navigationIconContentColor = Color(0xFF3E2723)
                 )
             )
-        }
+        },
+        snackbarHost = { SnackbarHost(snackbarHostState) }
     ) { padding ->
         Column(
             modifier = Modifier
@@ -83,13 +78,12 @@ fun AddEditHiveScreen(
                 .background(Color(0xFFF5F5F5))
                 .padding(16.dp)
         ) {
-            Text("Hive Name", fontSize = 13.sp, fontWeight = FontWeight.Medium, color = Color(0xFF666666))
+            Text("Name", fontSize = 13.sp, fontWeight = FontWeight.Medium, color = Color(0xFF666666))
             Spacer(modifier = Modifier.height(4.dp))
             OutlinedTextField(
                 value = state.name,
                 onValueChange = viewModel::onNameChange,
                 modifier = Modifier.fillMaxWidth(),
-                placeholder = { Text("Enter hive name") },
                 isError = state.nameError != null,
                 supportingText = state.nameError?.let { { Text(it) } },
                 shape = RoundedCornerShape(12.dp),
@@ -104,55 +98,33 @@ fun AddEditHiveScreen(
 
             Spacer(modifier = Modifier.height(16.dp))
 
-            Text("Hive Type", fontSize = 13.sp, fontWeight = FontWeight.Medium, color = Color(0xFF666666))
+            Text("Email", fontSize = 13.sp, fontWeight = FontWeight.Medium, color = Color(0xFF666666))
             Spacer(modifier = Modifier.height(4.dp))
-            ExposedDropdownMenuBox(
-                expanded = typeExpanded,
-                onExpandedChange = { typeExpanded = !typeExpanded }
-            ) {
-                OutlinedTextField(
-                    value = state.type,
-                    onValueChange = {},
-                    readOnly = true,
-                    modifier = Modifier.fillMaxWidth().menuAnchor(),
-                    trailingIcon = { ExposedDropdownMenuDefaults.TrailingIcon(expanded = typeExpanded) },
-                    shape = RoundedCornerShape(12.dp),
-                    colors = OutlinedTextFieldDefaults.colors(
-                        focusedBorderColor = Color(0xFFFF8F00),
-                        unfocusedBorderColor = Color(0xFFE0E0E0),
-                        unfocusedContainerColor = Color.White,
-                        focusedContainerColor = Color.White
-                    )
+            OutlinedTextField(
+                value = state.email,
+                onValueChange = viewModel::onEmailChange,
+                modifier = Modifier.fillMaxWidth(),
+                isError = state.emailError != null,
+                supportingText = state.emailError?.let { { Text(it) } },
+                shape = RoundedCornerShape(12.dp),
+                singleLine = true,
+                colors = OutlinedTextFieldDefaults.colors(
+                    focusedBorderColor = Color(0xFFFF8F00),
+                    unfocusedBorderColor = Color(0xFFE0E0E0),
+                    unfocusedContainerColor = Color.White,
+                    focusedContainerColor = Color.White
                 )
-                ExposedDropdownMenu(
-                    expanded = typeExpanded,
-                    onDismissRequest = { typeExpanded = false }
-                ) {
-                    hiveTypes.forEach { type ->
-                        DropdownMenuItem(
-                            text = { Text(type) },
-                            onClick = {
-                                viewModel.onTypeChange(type)
-                                typeExpanded = false
-                            }
-                        )
-                    }
-                }
-            }
+            )
 
-            Spacer(modifier = Modifier.height(32.dp))
+            Spacer(modifier = Modifier.height(24.dp))
 
             Button(
-                onClick = viewModel::saveHive,
+                onClick = viewModel::saveProfile,
                 modifier = Modifier.fillMaxWidth().height(52.dp),
                 shape = RoundedCornerShape(12.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xFFFF8F00))
             ) {
-                Text(
-                    if (state.isEditing) "Update Hive" else "Add Hive",
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 16.sp
-                )
+                Text("Save Profile", fontWeight = FontWeight.Bold, fontSize = 16.sp)
             }
         }
     }

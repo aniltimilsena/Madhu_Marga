@@ -20,6 +20,9 @@ interface HiveDao {
     @Query("SELECT COUNT(*) FROM hives")
     fun getHiveCount(): Flow<Int>
 
+    @Query("SELECT COUNT(*) FROM hives WHERE status = :status")
+    fun getHiveCountByStatus(status: String): Flow<Int>
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertHive(hive: Hive): Long
 

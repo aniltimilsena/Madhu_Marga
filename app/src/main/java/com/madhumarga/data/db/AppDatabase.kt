@@ -4,11 +4,13 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import com.madhumarga.data.db.dao.ApiaryDao
 import com.madhumarga.data.db.dao.HarvestDao
 import com.madhumarga.data.db.dao.HiveDao
 import com.madhumarga.data.db.dao.HiveImageDao
 import com.madhumarga.data.db.dao.InspectionDao
 import com.madhumarga.data.db.dao.UserProfileDao
+import com.madhumarga.data.db.entity.Apiary
 import com.madhumarga.data.db.entity.Harvest
 import com.madhumarga.data.db.entity.Hive
 import com.madhumarga.data.db.entity.HiveImage
@@ -21,9 +23,10 @@ import com.madhumarga.data.db.entity.UserProfile
         Inspection::class,
         Harvest::class,
         HiveImage::class,
-        UserProfile::class
+        UserProfile::class,
+        Apiary::class
     ],
-    version = 1,
+    version = 2,
     exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
@@ -32,6 +35,7 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun harvestDao(): HarvestDao
     abstract fun hiveImageDao(): HiveImageDao
     abstract fun userProfileDao(): UserProfileDao
+    abstract fun apiaryDao(): ApiaryDao
 
     companion object {
         @Volatile
@@ -43,7 +47,9 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "madhu_marga_database"
-                ).build()
+                )
+                    .fallbackToDestructiveMigration()
+                    .build()
                 INSTANCE = instance
                 instance
             }

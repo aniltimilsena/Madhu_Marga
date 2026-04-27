@@ -22,5 +22,8 @@ data class Harvest(
     val id: Long = 0,
     val hiveId: Long,
     val quantityKg: Double,
+    val variety: String = "Wildflower",
+    val moistureContent: Double = 17.0,
+    val honeyColor: String = "Amber",
     val date: Long = System.currentTimeMillis()
 )

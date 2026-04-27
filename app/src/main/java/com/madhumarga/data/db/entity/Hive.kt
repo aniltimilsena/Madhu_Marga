@@ -9,5 +9,10 @@ data class Hive(
     val id: Long = 0,
     val name: String,
     val type: String,
+    val apiaryId: Long? = null,
+    val temperature: Double? = null,
+    val humidity: Double? = null,
+    val weight: Double? = null,
+    val status: String = "Healthy",
     val createdAt: Long = System.currentTimeMillis()
 )

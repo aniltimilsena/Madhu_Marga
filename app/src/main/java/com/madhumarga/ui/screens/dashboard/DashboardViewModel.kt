@@ -7,6 +7,7 @@ import com.madhumarga.data.db.entity.Inspection
 import com.madhumarga.data.repository.HarvestRepository
 import com.madhumarga.data.repository.HiveRepository
 import com.madhumarga.data.repository.InspectionRepository
+import com.madhumarga.data.db.entity.Hive
 import kotlinx.coroutines.flow.Flow
 
 data class AlertItem(
@@ -28,6 +29,7 @@ class DashboardViewModel(application: Application) : AndroidViewModel(applicatio
     val hiveCount: Flow<Int> = hiveRepository.getHiveCount()
     val totalHarvest: Flow<Double?> = harvestRepository.getTotalHarvest()
     val recentInspections: Flow<List<Inspection>> = inspectionRepository.getRecentInspections()
+    val hives: Flow<List<Hive>> = hiveRepository.getAllHives()
 
     fun generateAlerts(inspections: List<Inspection>): List<AlertItem> {
         val alerts = mutableListOf<AlertItem>()
