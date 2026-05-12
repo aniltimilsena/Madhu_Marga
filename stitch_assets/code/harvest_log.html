@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Harvest Log | Hive Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-background": "#141b2b",
+                    "secondary-fixed": "#b0f0d6",
+                    "error": "#ba1a1a",
+                    "on-tertiary-fixed-variant": "#4d4727",
+                    "on-primary-fixed-variant": "#6e3900",
+                    "secondary-container": "#adedd3",
+                    "tertiary-fixed": "#ede3b8",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#2f1500",
+                    "background": "#f9f9ff",
+                    "primary-container": "#b15f00",
+                    "on-tertiary-fixed": "#201c02",
+                    "surface-container": "#e9edff",
+                    "on-primary": "#ffffff",
+                    "surface-bright": "#f9f9ff",
+                    "tertiary-container": "#b5ac84",
+                    "outline": "#887364",
+                    "on-secondary-container": "#306d58",
+                    "surface-container-highest": "#dce2f7",
+                    "primary": "#8d4b00",
+                    "tertiary-fixed-dim": "#d1c79d",
+                    "on-error-container": "#93000a",
+                    "error-container": "#ffdad6",
+                    "on-surface-variant": "#554336",
+                    "surface-variant": "#dce2f7",
+                    "on-surface": "#141b2b",
+                    "inverse-on-surface": "#edf0ff",
+                    "inverse-primary": "#ffb77d",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#ffdcc3",
+                    "on-secondary-fixed-variant": "#0b513d",
+                    "on-error": "#ffffff",
+                    "tertiary": "#665f3d",
+                    "surface-dim": "#d3daef",
+                    "secondary": "#2b6954",
+                    "on-tertiary-container": "#464021",
+                    "primary-fixed-dim": "#ffb77d",
+                    "surface": "#f9f9ff",
+                    "on-secondary": "#ffffff",
+                    "surface-container-high": "#e1e8fd",
+                    "surface-container-low": "#f1f3ff",
+                    "on-secondary-fixed": "#002117",
+                    "secondary-fixed-dim": "#95d3ba",
+                    "surface-tint": "#904d00",
+                    "inverse-surface": "#293040",
+                    "on-primary-container": "#fffbff",
+                    "outline-variant": "#dbc2b0"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "xl": "64px",
+                    "margin-desktop": "48px",
+                    "lg": "40px",
+                    "md": "24px",
+                    "sm": "12px",
+                    "base": "8px",
+                    "gutter": "16px",
+                    "xs": "4px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "headline-lg": ["Lexend"],
+                    "label-sm": ["Lexend"],
+                    "body-lg": ["Lexend"],
+                    "body-md": ["Lexend"],
+                    "headline-sm": ["Lexend"],
+                    "label-md": ["Lexend"],
+                    "headline-md": ["Lexend"]
+            },
+            "fontSize": {
+                    "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                    "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                    "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .honey-gradient {
+            background: linear-gradient(135deg, #ffb77d 0%, #b15f00 100%);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 shadow-sm shadow-amber-900/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-fixed">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="Portrait of a professional beekeeper in a sunlit apiary wearing a clean white suit, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_zFlybwemHyaSjODsZqShgwoatRKZDiSYl5_5Ez-e6sIx7NnqyOUtf_8qUOh777PenBfqmk6kYjqQiXQ9bPw41aPfakGiGPUDqRDYMFKeecUCINU-mJWw5jNDC0BcZbtlwktdk0jwhPIRKRGF_Jao9H2SU2fP3ks2PfWlxe9kjH4E_COpm72rTF47f7sg3tRYtLKIudvOJBN1JFvjAmnFODlbaTLy-l7NL0CA64K596XITG44oOfYzt-UMktQrDZe7HVG3I4p2zo"/>
+</div>
+<h1 class="font-lexend font-semibold text-lg tracking-tight text-emerald-900 dark:text-emerald-100">Hive Manager</h1>
+</div>
+<button class="text-stone-500 dark:text-stone-400 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors duration-200 ease-in-out p-2 rounded-full">
+<span class="material-symbols-outlined">settings</span>
+</button>
+</header>
+<main class="mt-20 px-margin-mobile md:px-margin-desktop max-w-5xl mx-auto">
+<!-- Yield Progress Section -->
+<section class="mb-lg">
+<div class="bg-white rounded-xl p-md border border-outline-variant shadow-[0_4px_12px_rgba(6,78,59,0.08)]">
+<div class="flex justify-between items-end mb-sm">
+<div>
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Seasonal Goal</p>
+<h2 class="font-headline-md text-primary mt-1">428.5 kg Total</h2>
+</div>
+<div class="text-right">
+<p class="font-label-sm text-on-surface-variant uppercase tracking-wider">Target: 500 kg</p>
+<p class="font-headline-sm text-secondary">85.7%</p>
+</div>
+</div>
+<!-- Honey Fill Progress Bar -->
+<div class="h-6 w-full bg-primary-fixed rounded-full overflow-hidden relative">
+<div class="h-full honey-gradient rounded-full" style="width: 85.7%;"></div>
+<div class="absolute inset-0 flex items-center justify-center opacity-20">
+<span class="text-[10px] font-bold text-on-primary">HONEY FLOW LEVEL</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Bento Grid Layout for Harvest Entry -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-gutter">
+<!-- Main Form Card -->
+<form class="lg:col-span-2 bg-white rounded-xl p-md border border-outline-variant shadow-[0_4px_12px_rgba(6,78,59,0.08)] flex flex-col gap-md">
+<div class="flex items-center gap-2 border-b border-outline-variant pb-base">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+<h3 class="font-headline-sm text-secondary">New Harvest Record</h3>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- Date Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Harvest Date</label>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg border border-outline bg-surface-bright focus:ring-2 focus:ring-primary focus:border-transparent outline-none" type="date"/>
+</div>
+</div>
+<!-- Weight Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Honey Weight</label>
+<div class="relative flex">
+<input class="w-full h-12 px-4 rounded-l-lg border border-outline bg-surface-bright focus:ring-2 focus:ring-primary outline-none" placeholder="0.0" step="0.1" type="number"/>
+<select class="w-24 h-12 px-2 rounded-r-lg border-y border-r border-outline bg-surface-container-low font-label-md text-on-surface outline-none">
+<option>kg</option>
+<option>lbs</option>
+</select>
+</div>
+</div>
+<!-- Variety Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Variety / Floral Source</label>
+<select class="w-full h-12 px-4 rounded-lg border border-outline bg-surface-bright focus:ring-2 focus:ring-primary outline-none">
+<option>Wildflower</option>
+<option>Clover</option>
+<option>Buckwheat</option>
+<option>Orange Blossom</option>
+<option>Manuka</option>
+<option>Other / Blend</option>
+</select>
+</div>
+<!-- Moisture Field -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Moisture Content (%)</label>
+<div class="relative">
+<input class="w-full h-12 px-4 rounded-lg border border-outline bg-surface-bright focus:ring-2 focus:ring-primary outline-none" placeholder="17.5" step="0.1" type="number"/>
+<span class="absolute right-4 top-3 text-outline material-symbols-outlined">humidity_percentage</span>
+</div>
+</div>
+</div>
+<!-- Honey Color Visual Selector -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-md text-on-surface-variant">Honey Color (Pfund Scale)</label>
+<div class="grid grid-cols-7 gap-2 h-10">
+<button class="bg-[#FFF9E3] border border-outline-variant rounded-md hover:ring-2 ring-primary transition-all" type="button"></button>
+<button class="bg-[#F8E1A0] border border-outline-variant rounded-md hover:ring-2 ring-primary transition-all" type="button"></button>
+<button class="bg-[#E9B94D] border border-outline-variant rounded-md ring-2 ring-primary transition-all" type="button"></button>
+<button class="bg-[#C88B2D] border border-outline-variant rounded-md hover:ring-2 ring-primary transition-all" type="button"></button>
+<button class="bg-[#9E5D1B] border border-outline-variant rounded-md hover:ring-2 ring-primary transition-all" type="button"></button>
+<button class="bg-[#6B3A0E] border border-outline-variant rounded-md hover:ring-2 ring-primary transition-all" type="button"></button>
+<button class="bg-[#442107] border border-outline-variant rounded-md hover:ring-2 ring-primary transition-all" type="button"></button>
+</div>
+<div class="flex justify-between font-label-sm text-outline px-1">
+<span>Water White</span>
+<span>Amber</span>
+<span>Dark Amber</span>
+</div>
+</div>
+<div class="mt-base flex gap-gutter">
+<button class="flex-1 h-12 bg-primary text-on-primary font-label-md rounded-lg shadow-lg shadow-primary-container/20 hover:scale-[1.02] active:scale-[0.98] transition-all" type="submit">
+                        Log Harvest Record
+                    </button>
+<button class="px-6 h-12 border border-secondary text-secondary font-label-md rounded-lg hover:bg-secondary-container/10 transition-colors" type="button">
+                        Cancel
+                    </button>
+</div>
+</form>
+<!-- Sidebar Stats/Context Card -->
+<aside class="flex flex-col gap-gutter">
+<div class="bg-secondary text-on-secondary rounded-xl p-md shadow-lg">
+<h4 class="font-label-md uppercase tracking-widest opacity-80 mb-sm">Hive Health Tip</h4>
+<p class="font-body-md italic leading-relaxed">
+                        "Ensure moisture content is below 18.6% to prevent fermentation during storage. High-quality wildflower honey often peaks at 17%."
+                    </p>
+</div>
+<div class="bg-white rounded-xl border border-outline-variant p-md overflow-hidden relative">
+<div class="absolute -right-4 -bottom-4 opacity-5">
+<span class="material-symbols-outlined text-[120px]">history</span>
+</div>
+<h4 class="font-label-md text-on-surface-variant mb-md">Last 3 Harvests</h4>
+<div class="space-y-md relative z-10">
+<div class="flex justify-between items-center border-l-4 border-amber-400 pl-3">
+<div>
+<p class="font-label-md">Aug 12, 2023</p>
+<p class="text-xs text-on-surface-variant">Clover Blend</p>
+</div>
+<span class="font-headline-sm text-primary">24.2kg</span>
+</div>
+<div class="flex justify-between items-center border-l-4 border-amber-200 pl-3">
+<div>
+<p class="font-label-md">Jul 28, 2023</p>
+<p class="text-xs text-on-surface-variant">Wildflower</p>
+</div>
+<span class="font-headline-sm text-primary">18.5kg</span>
+</div>
+<div class="flex justify-between items-center border-l-4 border-amber-600 pl-3">
+<div>
+<p class="font-label-md">Jul 05, 2023</p>
+<p class="text-xs text-on-surface-variant">Manuka-Style</p>
+</div>
+<span class="font-headline-sm text-primary">31.0kg</span>
+</div>
+</div>
+</div>
+<!-- Decorative Asset -->
+<div class="h-48 rounded-xl overflow-hidden border border-outline-variant">
+<img alt="Honey jars" class="w-full h-full object-cover" data-alt="Row of golden amber honey jars on a rustic wooden table with soft sunlight filtering through glass bottles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBYx_c4t0eZ0Okc0NfScgidjhKh6BghF4QJQkjVWhWqAMhr8O2NTGsv1NpZsfluVPGdFYgoygjWx2JVsJ7Eo2A4igV4LGzZ1_ikU1lxK9QHzhs8Miq3pwsC7NyzvV2BEtc8o4n7CRImqolB_NNnXtTnLSHUGfakEyQptsv06xsv3DlEJP1f-vOk6sW_9OZC-x1EJH56dkxpFojLouWG_oO957nw_3-WW5cLn1f-wodBsGIzA20w6qKmxzj1HuEyUJkaD_Qvz0xkaSA"/>
+</div>
+</aside>
+</div>
+</main>
+<!-- Success Toast (Visual Reference) -->
+<div class="fixed bottom-24 right-4 md:right-margin-desktop max-w-sm bg-secondary-container text-on-secondary-container p-4 rounded-xl shadow-xl flex items-center gap-3 border border-secondary/20">
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+<div>
+<p class="font-label-md">Record Saved Successfully</p>
+<p class="text-xs opacity-80">Total seasonal yield updated.</p>
+</div>
+</div>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20 bg-white/90 backdrop-blur-md dark:bg-stone-950/90 border-t border-stone-200 dark:border-stone-800 shadow-[0_-4px_12px_rgba(217,119,6,0.08)]">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">grid_view</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Hives</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">notifications_active</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">assignment_add</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Inspect</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 rounded-xl px-3 py-1 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Harvest</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform duration-150 active:scale-95" href="#">
+<span class="material-symbols-outlined">history</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">History</span>
+</a>
+</nav>
+</body></html>

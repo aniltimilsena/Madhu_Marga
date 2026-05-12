@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "986659203787",
+    "project_id": "madhu-marga-caded",
+    "storage_bucket": "madhu-marga-caded.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986659203787:android:1c288868c5f3bbd0bbc94e",
+        "android_client_info": {
+          "package_name": "com.smarthive.manager"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbcMYFc7Fc5-Ty5NdprO8uBw6E1nUwFVM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-background": "#141b2b",
+                        "secondary-fixed": "#b0f0d6",
+                        "error": "#ba1a1a",
+                        "on-tertiary-fixed-variant": "#4d4727",
+                        "on-primary-fixed-variant": "#6e3900",
+                        "secondary-container": "#adedd3",
+                        "tertiary-fixed": "#ede3b8",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#2f1500",
+                        "background": "#f9f9ff",
+                        "primary-container": "#b15f00",
+                        "on-tertiary-fixed": "#201c02",
+                        "surface-container": "#e9edff",
+                        "on-primary": "#ffffff",
+                        "surface-bright": "#f9f9ff",
+                        "tertiary-container": "#b5ac84",
+                        "outline": "#887364",
+                        "on-secondary-container": "#306d58",
+                        "surface-container-highest": "#dce2f7",
+                        "primary": "#8d4b00",
+                        "tertiary-fixed-dim": "#d1c79d",
+                        "on-error-container": "#93000a",
+                        "error-container": "#ffdad6",
+                        "on-surface-variant": "#554336",
+                        "surface-variant": "#dce2f7",
+                        "on-surface": "#141b2b",
+                        "inverse-on-surface": "#edf0ff",
+                        "inverse-primary": "#ffb77d",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#ffdcc3",
+                        "on-secondary-fixed-variant": "#0b513d",
+                        "on-error": "#ffffff",
+                        "tertiary": "#665f3d",
+                        "surface-dim": "#d3daef",
+                        "secondary": "#2b6954",
+                        "on-tertiary-container": "#464021",
+                        "primary-fixed-dim": "#ffb77d",
+                        "surface": "#f9f9ff",
+                        "on-secondary": "#ffffff",
+                        "surface-container-high": "#e1e8fd",
+                        "surface-container-low": "#f1f3ff",
+                        "on-secondary-fixed": "#002117",
+                        "secondary-fixed-dim": "#95d3ba",
+                        "surface-tint": "#904d00",
+                        "inverse-surface": "#293040",
+                        "on-primary-container": "#fffbff",
+                        "outline-variant": "#dbc2b0"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "xl": "64px",
+                        "margin-desktop": "48px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "sm": "12px",
+                        "base": "8px",
+                        "gutter": "16px",
+                        "xs": "4px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-lg": ["Lexend"],
+                        "label-sm": ["Lexend"],
+                        "body-lg": ["Lexend"],
+                        "body-md": ["Lexend"],
+                        "headline-sm": ["Lexend"],
+                        "label-md": ["Lexend"],
+                        "headline-md": ["Lexend"]
+                    },
+                    "fontSize": {
+                        "headline-lg": ["32px", {"lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "label-sm": ["12px", {"lineHeight": "16px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "headline-sm": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-md": ["14px", {"lineHeight": "20px", "letterSpacing": "0.02em", "fontWeight": "600"}],
+                        "headline-md": ["24px", {"lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600"}]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-32">
+<!-- TopAppBar -->
+<header class="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-4 h-16 bg-white dark:bg-stone-950 border-b border-stone-200 dark:border-stone-800 shadow-sm shadow-amber-900/5">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden border-2 border-primary-container">
+<img alt="Profile picture of the beekeeper" data-alt="close-up portrait of a professional beekeeper with a friendly expression, outdoor natural lighting, soft focus garden background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAR5fZe4wJ_JgplerVUADkWRBjxel4WfSD7BiwNE4rNSYPmK_Im73UqIc43u4NOAMFsQvyfN6GnqlHthe6axO2Su1Sbf5rPrO-zdCg4rzcIKf2nCC2cqyYAyAI6HJmgvdS6gz4xiSNEY8QjmmQCfDf2JkTmexvqm4x78iZmTXG9-BBMiUSVm2xgFf594hyceS6U4sRd-qPcV4loxkH_ifet4TMhCTXGgMPt2vWkZqaWGdZGbEC6bNpSZnLU6JLIZwQqbwCwbzlmjFE"/>
+</div>
+<h1 class="font-lexend font-semibold text-lg tracking-tight text-emerald-900 dark:text-emerald-100">Hive Manager</h1>
+</div>
+<button class="material-symbols-outlined text-stone-500 dark:text-stone-400 p-2 hover:bg-stone-100 dark:hover:bg-stone-900 transition-colors duration-200 ease-in-out rounded-full" data-icon="settings">settings</button>
+</header>
+<main class="container mx-auto px-margin-mobile md:px-margin-desktop pt-24 max-w-5xl">
+<!-- Alerts Section: Bento Grid Style -->
+<section class="mb-12">
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="notifications_active">notifications_active</span>
+<h2 class="font-headline-md text-headline-md">Active Alerts</h2>
+</div>
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-label-sm font-label-sm flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-error"></span> 3 CRITICAL
+                </span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Critical Alert Card -->
+<div class="md:col-span-2 bg-white p-6 rounded-xl border border-stone-200 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden">
+<div class="absolute top-0 right-0 p-4">
+<span class="material-symbols-outlined text-error opacity-20 text-6xl" data-icon="warning">warning</span>
+</div>
+<div class="flex flex-col h-full justify-between gap-4">
+<div>
+<span class="text-error font-label-sm text-label-sm tracking-widest uppercase mb-2 block">High Risk</span>
+<h3 class="font-headline-sm text-headline-sm mb-2">High Varroa Mite Count detected in Hive 3</h3>
+<p class="text-on-surface-variant max-w-md">Last sensor reading indicates a 4.2% infestation rate. Immediate chemical or heat treatment recommended to prevent colony collapse.</p>
+</div>
+<div class="flex gap-3">
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-label-md text-label-md shadow-sm hover:opacity-90 transition-opacity">Schedule Treatment</button>
+<button class="border border-outline text-on-surface px-4 py-3 rounded-lg font-label-md text-label-md hover:bg-stone-50">Dismiss</button>
+</div>
+</div>
+</div>
+<!-- Secondary Alert Card -->
+<div class="bg-amber-50 p-6 rounded-xl border border-amber-200 shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-full bg-amber-200 flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-amber-900" data-icon="thermostat">thermostat</span>
+</div>
+<h4 class="font-label-md text-label-md text-amber-900 mb-1">Temp Fluctuation</h4>
+<p class="text-amber-800 text-sm">Hive 7 dropped below 32°C. Check insulation integrity immediately.</p>
+</div>
+<p class="text-amber-600 text-[10px] uppercase font-bold mt-4">2 hours ago</p>
+</div>
+<!-- Tertiary Alert Card -->
+<div class="bg-secondary-container/30 p-6 rounded-xl border border-secondary-container shadow-sm flex flex-col justify-between">
+<div>
+<div class="w-10 h-10 rounded-full bg-secondary-container flex items-center justify-center mb-4">
+<span class="material-symbols-outlined text-on-secondary-container" data-icon="weight">weight</span>
+</div>
+<h4 class="font-label-md text-label-md text-on-secondary-container mb-1">Honey Flow Alert</h4>
+<p class="text-on-secondary-container/80 text-sm">Hive 2 reached 85% capacity. Prepare for harvest within 48h.</p>
+</div>
+<p class="text-on-secondary-container/60 text-[10px] uppercase font-bold mt-4">6 hours ago</p>
+</div>
+</div>
+</section>
+<!-- History Section: Timeline/Expandable List -->
+<section>
+<div class="flex items-center justify-between mb-6">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary" data-icon="history">history</span>
+<h2 class="font-headline-md text-headline-md">Inspection History</h2>
+</div>
+<button class="text-primary font-label-md text-label-md flex items-center gap-1">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span> Filter
+                </button>
+</div>
+<div class="space-y-4">
+<!-- Inspection Item 1 (Expanded) -->
+<div class="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm ring-2 ring-primary/10">
+<div class="p-6 flex flex-col md:flex-row gap-6 md:items-center justify-between bg-stone-50/50">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-emerald-100 flex items-center justify-center text-emerald-700 shrink-0">
+<span class="material-symbols-outlined" data-icon="assignment_turned_in">assignment_turned_in</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm">Routine Summer Check</h3>
+<div class="flex items-center gap-3 mt-1 text-on-surface-variant">
+<span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-base" data-icon="calendar_today">calendar_today</span> Oct 12, 2023</span>
+<span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-base" data-icon="hive">hive</span> All Hives</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2">
+<span class="bg-secondary-fixed text-on-secondary-fixed-variant px-3 py-1 rounded-full text-label-sm font-label-sm">Healthy</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="expand_less">expand_less</span>
+</div>
+</div>
+<div class="p-6 border-t border-stone-100 grid grid-cols-1 md:grid-cols-2 gap-8">
+<div>
+<h4 class="font-label-md text-label-md text-emerald-900 mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="description">description</span> Detailed Logs
+                            </h4>
+<ul class="space-y-3 text-on-surface-variant text-sm">
+<li class="flex justify-between border-b border-stone-50 pb-1"><span>Queen Spotted:</span> <span class="font-bold text-on-surface">Yes (Marked Blue)</span></li>
+<li class="flex justify-between border-b border-stone-50 pb-1"><span>Brood Pattern:</span> <span class="font-bold text-on-surface">Solid / Wall-to-Wall</span></li>
+<li class="flex justify-between border-b border-stone-50 pb-1"><span>Honey Stores:</span> <span class="font-bold text-on-surface">6/10 Frames Full</span></li>
+<li class="flex justify-between border-b border-stone-50 pb-1"><span>Temperament:</span> <span class="font-bold text-on-surface">Calm</span></li>
+</ul>
+</div>
+<div class="bg-tertiary-fixed/30 p-5 rounded-xl border border-tertiary-container/30">
+<h4 class="font-label-md text-label-md text-on-tertiary-fixed-variant mb-3 flex items-center gap-2">
+<span class="material-symbols-outlined text-base" data-icon="auto_awesome" data-weight="fill">auto_awesome</span> AI Recommendations
+                            </h4>
+<p class="text-sm text-on-tertiary-fixed-variant leading-relaxed mb-4">
+                                Based on the current pollen flow and brood density, Hive 3 is likely to swarm in the next 14 days. Suggest adding a honey super by next weekend to provide more space.
+                            </p>
+<button class="w-full bg-white text-primary border border-primary/20 py-2 rounded-lg text-label-sm font-label-sm hover:bg-primary/5">Order Honey Super</button>
+</div>
+</div>
+</div>
+<!-- Inspection Item 2 (Collapsed) -->
+<div class="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm hover:border-primary/30 transition-colors">
+<div class="p-6 flex flex-col md:flex-row gap-6 md:items-center justify-between">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-stone-100 flex items-center justify-center text-stone-600 shrink-0">
+<span class="material-symbols-outlined" data-icon="medical_services">medical_services</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm">Emergency Treatment Log</h3>
+<div class="flex items-center gap-3 mt-1 text-on-surface-variant">
+<span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-base" data-icon="calendar_today">calendar_today</span> Oct 05, 2023</span>
+<span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-base" data-icon="hive">hive</span> Hive 3</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 items-center">
+<span class="bg-error-container text-on-error-container px-3 py-1 rounded-full text-label-sm font-label-sm">Action Taken</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+<!-- Inspection Item 3 (Collapsed) -->
+<div class="bg-white rounded-xl border border-stone-200 overflow-hidden shadow-sm hover:border-primary/30 transition-colors">
+<div class="p-6 flex flex-col md:flex-row gap-6 md:items-center justify-between">
+<div class="flex items-start gap-4">
+<div class="w-12 h-12 rounded-lg bg-stone-100 flex items-center justify-center text-stone-600 shrink-0">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+</div>
+<div>
+<h3 class="font-headline-sm text-headline-sm">Partial Harvest - Summer Cycle</h3>
+<div class="flex items-center gap-3 mt-1 text-on-surface-variant">
+<span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-base" data-icon="calendar_today">calendar_today</span> Sept 28, 2023</span>
+<span class="flex items-center gap-1 text-sm"><span class="material-symbols-outlined text-base" data-icon="hive">hive</span> Apiary East</span>
+</div>
+</div>
+</div>
+<div class="flex gap-2 items-center">
+<span class="bg-secondary-container text-on-secondary-container px-3 py-1 rounded-full text-label-sm font-label-sm">Completed</span>
+<span class="material-symbols-outlined text-stone-400" data-icon="expand_more">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-safe h-20 bg-white/90 backdrop-blur-md dark:bg-stone-950/90 rounded-t-lg border-t border-stone-200 dark:border-stone-800 shadow-[0_-4px_12px_rgba(217,119,6,0.08)]">
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="grid_view">grid_view</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Hives</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="notifications_active">notifications_active</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Alerts</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="assignment_add">assignment_add</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Inspect</span>
+</a>
+<a class="flex flex-col items-center justify-center text-stone-500 dark:text-stone-400 px-3 py-1 hover:text-amber-600 dark:hover:text-amber-500 transition-transform active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="inventory_2">inventory_2</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">Harvest</span>
+</a>
+<a class="flex flex-col items-center justify-center text-amber-700 dark:text-amber-400 bg-amber-50 dark:bg-amber-900/20 rounded-xl px-3 py-1 transition-transform active:scale-95 duration-150" href="#">
+<span class="material-symbols-outlined" data-icon="history">history</span>
+<span class="font-lexend text-[10px] font-medium tracking-wide uppercase mt-1">History</span>
+</a>
+</nav>
+</body></html>
